@@ -132,7 +132,8 @@ function OfferPage(): JSX.Element {
                 <div className="offer__host-user user">
                   <div className="offer__avatar-wrapper offer__avatar-wrapper--pro user__avatar-wrapper">
                     <img className="offer__avatar user__avatar" src="img/avatar-angelina.jpg" width="74" height="74"
-                         alt="Host avatar"/>
+                      alt="Host avatar"
+                    />
                   </div>
                   <span className="offer__user-name">
                         Angelina
@@ -159,7 +160,8 @@ function OfferPage(): JSX.Element {
                     <div className="reviews__user user">
                       <div className="reviews__avatar-wrapper user__avatar-wrapper">
                         <img className="reviews__avatar user__avatar" src="img/avatar-max.jpg" width="54" height="54"
-                             alt="Reviews avatar"/>
+                          alt="Reviews avatar"
+                        />
                       </div>
                       <span className="reviews__user-name">
                             Max
@@ -184,7 +186,8 @@ function OfferPage(): JSX.Element {
                   <label className="reviews__label form__label" htmlFor="review">Your review</label>
                   <div className="reviews__rating-form form__rating">
                     <input className="form__rating-input visually-hidden" name="rating" value="5" id="5-stars"
-                           type="radio"/>
+                      type="radio"
+                    />
                     <label htmlFor="5-stars" className="reviews__rating-label form__rating-label" title="perfect">
                       <svg className="form__star-image" width="37" height="33">
                         <use xlinkHref="#icon-star"></use>
@@ -192,7 +195,8 @@ function OfferPage(): JSX.Element {
                     </label>
 
                     <input className="form__rating-input visually-hidden" name="rating" value="4" id="4-stars"
-                           type="radio"/>
+                      type="radio"
+                    />
                     <label htmlFor="4-stars" className="reviews__rating-label form__rating-label" title="good">
                       <svg className="form__star-image" width="37" height="33">
                         <use xlinkHref="#icon-star"></use>
@@ -200,7 +204,8 @@ function OfferPage(): JSX.Element {
                     </label>
 
                     <input className="form__rating-input visually-hidden" name="rating" value="3" id="3-stars"
-                           type="radio"/>
+                      type="radio"
+                    />
                     <label htmlFor="3-stars" className="reviews__rating-label form__rating-label" title="not bad">
                       <svg className="form__star-image" width="37" height="33">
                         <use xlinkHref="#icon-star"></use>
@@ -208,7 +213,8 @@ function OfferPage(): JSX.Element {
                     </label>
 
                     <input className="form__rating-input visually-hidden" name="rating" value="2" id="2-stars"
-                           type="radio"/>
+                      type="radio"
+                    />
                     <label htmlFor="2-stars" className="reviews__rating-label form__rating-label" title="badly">
                       <svg className="form__star-image" width="37" height="33">
                         <use xlinkHref="#icon-star"></use>
@@ -216,7 +222,8 @@ function OfferPage(): JSX.Element {
                     </label>
 
                     <input className="form__rating-input visually-hidden" name="rating" value="1" id="1-star"
-                           type="radio"/>
+                      type="radio"
+                    />
                     <label htmlFor="1-star" className="reviews__rating-label form__rating-label" title="terribly">
                       <svg className="form__star-image" width="37" height="33">
                         <use xlinkHref="#icon-star"></use>
@@ -224,7 +231,9 @@ function OfferPage(): JSX.Element {
                     </label>
                   </div>
                   <textarea className="reviews__textarea form__textarea" id="reviSew" name="review"
-                            placeholder="Tell how was your stay, what you like and what can be improved"></textarea>
+                    placeholder="Tell how was your stay, what you like and what can be improved"
+                  >
+                  </textarea>
                   <div className="reviews__button-wrapper">
                     <p className="reviews__help">
                       To submit review please make sure to set <span className="reviews__star">rating</span> and
@@ -255,7 +264,8 @@ function OfferPage(): JSX.Element {
                       <span className="place-card__price-text">&#47;&nbsp;night</span>
                     </div>
                     <button className="place-card__bookmark-button place-card__bookmark-button--active button"
-                            type="button">
+                      type="button"
+                    >
                       <svg className="place-card__bookmark-icon" width="18" height="19">
                         <use xlinkHref="#icon-bookmark"></use>
                       </svg>
@@ -279,7 +289,8 @@ function OfferPage(): JSX.Element {
                 <div className="near-places__image-wrapper place-card__image-wrapper">
                   <a href="#">
                     <img className="place-card__image" src="img/apartment-02.jpg" width="260" height="200"
-                         alt="Place image"/>
+                      alt="Place image"
+                    />
                   </a>
                 </div>
                 <div className="place-card__info">
@@ -315,7 +326,8 @@ function OfferPage(): JSX.Element {
                 <div className="near-places__image-wrapper place-card__image-wrapper">
                   <a href="#">
                     <img className="place-card__image" src="img/apartment-03.jpg" width="260" height="200"
-                         alt="Place image"/>
+                      alt="Place image"
+                    />
                   </a>
                 </div>
                 <div className="place-card__info">
