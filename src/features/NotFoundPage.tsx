@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import {Link} from 'react-router-dom';
 import {AppRoute} from '../constants.ts';
 
@@ -11,6 +12,9 @@ function NotFoundPage(): JSX.Element {
         alignItems: 'center'
       }}
     >
+      <Helmet>
+        <title>Страница не найдена</title>
+      </Helmet>
       <h1>404. Page not found</h1>
       <br/>
       <Link
