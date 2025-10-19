@@ -2,11 +2,11 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import {HelmetProvider} from 'react-helmet-async';
 import {AppRoute, AuthorizationStatus} from '@constants';
 import PrivateRoute from 'components/PrivateRoute';
-import MainPage from './MainPage.tsx';
-import LoginPage from './LoginPage.tsx';
-import FavouritesPage from './FavouritesPage.tsx';
-import OfferPage from './OfferPage.tsx';
-import NotFoundPage from './NotFoundPage.tsx';
+import MainPage from './MainPage';
+import LoginPage from './LoginPage';
+import FavouritesPage from './FavouritesPage';
+import OfferPage from './OfferPage';
+import NotFoundPage from './NotFoundPage';
 
 type AppProps = {
   placesCount: number;
@@ -23,12 +23,22 @@ function App({placesCount}: AppProps): JSX.Element {
           />
           <Route
             path={AppRoute.Login}
-            element={<LoginPage/>}
+            element={
+            <PrivateRoute
+              restrictedFor={AuthorizationStatus.Auth}
+              redirectTo={AppRoute.Main}
+            >
+              <LoginPage/>
+            </PrivateRoute>
+            }
           />
           <Route
             path={AppRoute.Favourites}
             element={
-              <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
+              <PrivateRoute
+                restrictedFor={AuthorizationStatus.NoAuth}
+                redirectTo={AppRoute.Login}
+              >
                 <FavouritesPage/>
               </PrivateRoute>
             }

@@ -1,7 +1,7 @@
 import PlaceCard from 'components/PlaceCard';
 import PlaceCardType from 'types/PlaceCardType';
 import StayDuration from 'types/StayDuration';
-import Page from 'components/Page.tsx';
+import Page from 'components/Page';
 
 const placeCards = [
   {

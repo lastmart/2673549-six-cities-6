@@ -1,4 +1,4 @@
-import Page from 'components/Page.tsx';
+import Page from 'components/Page';
 
 function LoginPage(): JSX.Element {
   return (
