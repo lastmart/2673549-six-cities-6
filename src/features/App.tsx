@@ -1,7 +1,7 @@
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import {HelmetProvider} from 'react-helmet-async';
-import {AppRoute, AuthorizationStatus} from '../constants.ts';
-import PrivateRoute from '../components/PrivateRoute.tsx';
+import {AppRoute, AuthorizationStatus} from '@constants';
+import PrivateRoute from 'components/PrivateRoute';
 import MainPage from './MainPage.tsx';
 import LoginPage from './LoginPage.tsx';
 import FavouritesPage from './FavouritesPage.tsx';

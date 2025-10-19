@@ -1,4 +1,4 @@
-import Page from '../components/Page.tsx';
+import Page from 'components/Page.tsx';
 
 function OfferPage(): JSX.Element {
   return (

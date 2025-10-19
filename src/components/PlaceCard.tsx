@@ -1,6 +1,6 @@
-import getPercentage from '../lib/GetPercentage';
-import PlaceCardType from '../types/PlaceCardType';
-import StayDuration from '../types/StayDuration.ts';
+import getPercentage from 'lib/GetPercentage';
+import PlaceCardType from 'types/PlaceCardType';
+import StayDuration from 'types/StayDuration';
 
 const MaxStarsCount: number = 5;
 

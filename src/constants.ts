@@ -12,3 +12,8 @@ export enum AuthorizationStatus {
   NoAuth = 'NO_AUTH',
   Unknown = 'UNKNOWN',
 }
+
+export const PAGE_CONFIG = {
+  BASE_TITLE: 'Шесть городов',
+  DEFAULT_TITLE: 'Шесть городов'
+} as const;

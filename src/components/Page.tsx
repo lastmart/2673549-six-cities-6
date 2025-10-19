@@ -1,12 +1,7 @@
 import {useLocation} from 'react-router-dom';
 import React, {useState, useEffect} from 'react';
 import {Helmet} from 'react-helmet-async';
-import {AppRoute} from '../constants.ts';
-
-const PAGE_CONFIG = {
-  BASE_TITLE: 'Шесть городов',
-  DEFAULT_TITLE: 'Шесть городов'
-} as const;
+import {AppRoute, PAGE_CONFIG} from '@constants';
 
 type PageProps = {
   children: JSX.Element;

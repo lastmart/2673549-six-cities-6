@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import {Link} from 'react-router-dom';
-import {AppRoute} from '../constants.ts';
+import {AppRoute} from '@constants';
 
 function NotFoundPage(): JSX.Element {
   return (
