@@ -28,7 +28,7 @@ function getPageTitle(pathname: string): string {
 
 function Page({children}: PageProps) {
   const location = useLocation();
-  const [title, setTitle] = useState('');
+  const [title, setTitle] = useState(PAGE_CONFIG.DEFAULT_TITLE);
   useEffect(() => {
     setTitle(getPageTitle(location.pathname));
   }, [location]);

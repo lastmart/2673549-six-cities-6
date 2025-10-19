@@ -15,5 +15,5 @@ export enum AuthorizationStatus {
 
 export const PAGE_CONFIG = {
   BASE_TITLE: 'Шесть городов',
-  DEFAULT_TITLE: 'Шесть городов'
+  DEFAULT_TITLE: 'Шесть городов' as string
 } as const;
