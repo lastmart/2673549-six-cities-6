@@ -1,71 +1,16 @@
-import PlaceCard from 'components/PlaceCard';
-import PlaceCardType from 'types/PlaceCardType';
-import StayDuration from 'types/StayDuration';
+import {Link} from 'react-router-dom';
 import Page from 'components/Page';
+import OffersList from 'components/OfferList';
+import {Offer} from 'types/offerTypes/Offer';
+import {AppRoute} from "@constants";
 
-const placeCards = [
-  {
-    id: 1,
-    isPremium: true,
-    image: 'markup/img/apartment-01.jpg',
-    price: 120,
-    stayDuration: StayDuration.Night,
-    isBookmarked: false,
-    stars: 4,
-    title: 'Beautiful & luxurious apartment at great location',
-    type: PlaceCardType.Apartment
-  },
-  {
-    id: 2,
-    isPremium: false,
-    image: 'markup/img/room.jpg',
-    price: 80,
-    stayDuration: StayDuration.Night,
-    isBookmarked: true,
-    stars: 4,
-    title: 'Wood and stone place',
-    type: PlaceCardType.Room
-  },
-  {
-    id: 3,
-    isPremium: false,
-    image: 'markup/img/apartment-02.jpg',
-    price: 132,
-    stayDuration: StayDuration.Night,
-    isBookmarked: false,
-    stars: 4,
-    title: 'Canal View Prinsengracht',
-    type: PlaceCardType.Apartment
-  },
-  {
-    id: 4,
-    isPremium: true,
-    image: 'markup/img/apartment-03.jpg',
-    price: 180,
-    stayDuration: StayDuration.Night,
-    isBookmarked: false,
-    stars: 5,
-    title: 'Nice, cozy, warm big bed apartment',
-    type: PlaceCardType.Apartment
-  },
-  {
-    id: 5,
-    isPremium: false,
-    image: 'markup/img/room.jpg',
-    price: 80,
-    stayDuration: StayDuration.Night,
-    isBookmarked: true,
-    stars: 4,
-    title: 'Wood and stone place',
-    type: PlaceCardType.Room
-  }
-];
 
 type MainPageProps = {
   placeOffersCount: number;
+  offers: Offer[]
 }
 
-function MainPage({placeOffersCount}: MainPageProps): JSX.Element {
+function MainPage({placeOffersCount, offers}: MainPageProps): JSX.Element {
   return (
     <Page>
       <div className="page page--gray page--main">
@@ -73,9 +18,9 @@ function MainPage({placeOffersCount}: MainPageProps): JSX.Element {
           <div className="container">
             <div className="header__wrapper">
               <div className="header__left">
-                <a className="header__logo-link header__logo-link--active">
+                <Link className="header__logo-link header__logo-link--active" to={AppRoute.Main}>
                   <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41"/>
-                </a>
+                </Link>
               </div>
               <nav className="header__nav">
                 <ul className="header__nav-list">
@@ -156,11 +101,7 @@ function MainPage({placeOffersCount}: MainPageProps): JSX.Element {
                     <li className="places__option" tabIndex={0}>Top rated first</li>
                   </ul>
                 </form>
-                <div className="cities__places-list places__list tabs__content">
-                  {placeCards.map((placeCard) => (
-                    <PlaceCard {...placeCard} key={placeCard.id}/>
-                  ))}
-                </div>
+                <OffersList offers={offers}/>
               </section>
               <div className="cities__right-section">
                 <section className="cities__map map"></section>

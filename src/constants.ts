@@ -1,5 +1,7 @@
 export const PlacesCount: number = 8;
 
+export const MaxRating: number = 100;
+
 export enum AppRoute {
   Main = '/',
   Login = '/login',

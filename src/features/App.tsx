@@ -7,29 +7,33 @@ import LoginPage from './LoginPage';
 import FavouritesPage from './FavouritesPage';
 import OfferPage from './OfferPage';
 import NotFoundPage from './NotFoundPage';
+import {Offer} from 'types/offerTypes/Offer';
+import {Review} from 'types/offerTypes/Review';
 
 type AppProps = {
   placesCount: number;
+  offers: Offer[],
+  reviews: Review[]
 }
 
-function App({placesCount}: AppProps): JSX.Element {
+function App({placesCount, offers, reviews}: AppProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
         <Routes>
           <Route
             path={AppRoute.Main}
-            element={<MainPage placeOffersCount={placesCount}/>}
+            element={<MainPage placeOffersCount={placesCount} offers={offers}/>}
           />
           <Route
             path={AppRoute.Login}
             element={
-            <PrivateRoute
-              restrictedFor={AuthorizationStatus.Auth}
-              redirectTo={AppRoute.Main}
-            >
-              <LoginPage/>
-            </PrivateRoute>
+              <PrivateRoute
+                restrictedFor={AuthorizationStatus.Auth}
+                redirectTo={AppRoute.Main}
+              >
+                <LoginPage/>
+              </PrivateRoute>
             }
           />
           <Route
@@ -39,13 +43,13 @@ function App({placesCount}: AppProps): JSX.Element {
                 restrictedFor={AuthorizationStatus.NoAuth}
                 redirectTo={AppRoute.Login}
               >
-                <FavouritesPage/>
+                <FavouritesPage offers={offers}/>
               </PrivateRoute>
             }
           />
           <Route
             path={`${AppRoute.Offer}/:offerId`}
-            element={<OfferPage/>}
+            element={<OfferPage offers={offers} reviews={reviews}/>}
           />
           <Route
             path="*"

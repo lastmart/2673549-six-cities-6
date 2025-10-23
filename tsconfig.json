@@ -19,6 +19,7 @@
       "features": ["features/*"],
       "lib/*": ["lib/*"],
       "types/*": ["types/*"],
+      "mocks/*": ["mocks/*"],
       "@constants": ["constants.ts"],
     },
 
