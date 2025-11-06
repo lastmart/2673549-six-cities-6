@@ -5,7 +5,7 @@ type CardRating = {
   rating: number;
 }
 
-export function CardRating({rating}: CardRating) {
+export function CardRatingPart({rating}: CardRating) {
   return (
     <div className="place-card__rating rating">
       <div className="place-card__stars rating__stars">

@@ -2,7 +2,7 @@ type CardFavouriteProps = {
   isFavourite: boolean;
 }
 
-export function CardFavourite({ isFavourite }: CardFavouriteProps) {
+export function CardFavouritePart({ isFavourite }: CardFavouriteProps) {
   return (
     isFavourite ?
       <button className="place-card__bookmark-button place-card__bookmark-button--active button">

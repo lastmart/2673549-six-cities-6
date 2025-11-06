@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
-import { CardPremium } from './card-premium.tsx';
-import { CardFavourite } from './card-favourite.tsx';
-import { CardRating } from './card-rating';
-import { Offer } from 'types/offer-types/offer.ts';
+import { CardPremiumPart } from './card-premium-part';
+import { CardFavouritePart } from './card-favourite-part';
+import { CardRatingPart } from './card-rating-part';
+import { Offer } from 'types/offer-types/offer';
 import { AppRoute } from '@constants';
 
 type FavouriteCardProps = {
@@ -12,7 +12,7 @@ type FavouriteCardProps = {
 export function FavouriteCard({ offer }: FavouriteCardProps) {
   return (
     <article className="favorites__card place-card">
-      <CardPremium isPremium={offer.isPremium} />
+      <CardPremiumPart isPremium={offer.isPremium} />
       <div className="favorites__image-wrapper place-card__image-wrapper">
         <Link to={`${AppRoute.Offer}/${offer.id}`}>
           <img className="place-card__image" src={offer.previewImage} width="150" height="110"
@@ -26,9 +26,9 @@ export function FavouriteCard({ offer }: FavouriteCardProps) {
             <b className="place-card__price-value">&euro;{offer.price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-          <CardFavourite isFavourite={offer.isFavourite} />
+          <CardFavouritePart isFavourite={offer.isFavourite} />
         </div>
-        <CardRating rating={offer.rating} />
+        <CardRatingPart rating={offer.rating} />
         <h2 className="place-card__name">
           <Link to={`${AppRoute.Offer}/${offer.id}`}>{offer.title}</Link>
         </h2>

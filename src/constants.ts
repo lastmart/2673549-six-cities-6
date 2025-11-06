@@ -1,6 +1,5 @@
-export const PlacesCount: number = 8;
-
 export const MaxRating: number = 5;
+export const MaxCommentSize: number = 2000;
 
 export enum AppRoute {
   Main = '/',

@@ -8,9 +8,8 @@ type FavoritesPageProps = {
   offers: Offer[];
 };
 
-function FavouritesPage({ offers }: FavoritesPageProps): JSX.Element {
-  const favouriteOffers = offers.filter((offer) => offer.isFavourite);
-  const offersByCities = favouriteOffers.reduce<Record<string, Offer[]>>((acc, offer) => {
+function getFavouritesByCity(offers: Offer[]) {
+  return offers.reduce<Record<string, Offer[]>>((acc, offer) => {
     const cityName = offer.city.name;
 
     if (!acc[cityName]) {
@@ -20,6 +19,11 @@ function FavouritesPage({ offers }: FavoritesPageProps): JSX.Element {
     acc[cityName].push(offer);
     return acc;
   }, {});
+}
+
+function FavouritesPage({ offers }: FavoritesPageProps): JSX.Element {
+  const favouriteOffers = offers.filter((offer) => offer.isFavourite);
+  const offersByCities = getFavouritesByCity(favouriteOffers);
 
   return (
     <Page>
