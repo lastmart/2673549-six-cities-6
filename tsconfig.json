@@ -18,6 +18,7 @@
       "components": ["components/*"],
       "features": ["features/*"],
       "lib/*": ["lib/*"],
+      "hooks/*": ["hooks/*"],
       "types/*": ["types/*"],
       "mocks/*": ["mocks/*"],
       "@constants": ["constants.ts"],

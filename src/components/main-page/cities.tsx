@@ -1,4 +1,5 @@
 import { Offer } from 'types/offer-types/offer';
+import Map from 'components/base/map';
 import OffersList from 'components/main-page/offer-list';
 import { useState } from 'react';
 import { OfferPreview } from 'types/offer-types/offer-preview';
@@ -8,7 +9,8 @@ type CityProps = {
 }
 
 export function Cities({ offers }: CityProps): JSX.Element {
-  const [, setActiveOfferId] = useState<OfferPreview['id'] | null>(null);
+  const [activeOfferId, setActiveOfferId] = useState<OfferPreview['id'] | null>(null);
+  const activeOffer = offers.find((offer) => offer.id === activeOfferId);
 
   return (
     <div className="cities">
@@ -34,7 +36,7 @@ export function Cities({ offers }: CityProps): JSX.Element {
           <OffersList offers={offers} onOfferHover={setActiveOfferId} />
         </section>
         <div className="cities__right-section">
-          <section className="cities__map map"></section>
+          <Map city={activeOffer?.city || offers[0].city} offers={offers} selectedOffer={activeOffer}/>
         </div>
       </div>
     </div>
