@@ -55,9 +55,9 @@ function MainPage(): JSX.Element {
         <main className="page__main page__main--index">
           <h1 className="visually-hidden">Cities</h1>
           <div className="tabs">
-            <LocationList activeCity={activeCity.name} onCityChange={handleChangeCity}></LocationList>
+            <LocationList activeCity={activeCity.name} onCityChange={handleChangeCity}/>
           </div>
-          <Cities city={activeCity} offers={activeOffers}/>
+          <Cities activeCity={activeCity} offers={activeOffers}/>
         </main>
       </div>
     </Page>
