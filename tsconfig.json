@@ -21,6 +21,7 @@
       "hooks/*": ["hooks/*"],
       "types/*": ["types/*"],
       "mocks/*": ["mocks/*"],
+      "store/*": ["store/*"],
       "@constants": ["constants.ts"],
     },
 

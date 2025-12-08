@@ -1,7 +1,7 @@
 import { Location } from './location';
-import { CityName } from '@constants';
+import { CityNames } from '@constants';
 
 export type City = {
   location: Location;
-  name: CityName;
+  name: CityNames;
 };

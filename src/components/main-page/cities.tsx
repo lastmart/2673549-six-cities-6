@@ -3,12 +3,14 @@ import Map from 'components/base/map';
 import OffersList from 'components/main-page/offer-list';
 import { useState } from 'react';
 import { OfferPreview } from 'types/offer-types/offer-preview';
+import { City } from 'types/offer-types/сity';
 
 type CityProps = {
+  city: City;
   offers: Offer[];
 }
 
-export function Cities({ offers }: CityProps): JSX.Element {
+export function Cities({ city: activeCity, offers }: CityProps): JSX.Element {
   const [activeOfferId, setActiveOfferId] = useState<OfferPreview['id'] | null>(null);
   const activeOffer = offers.find((offer) => offer.id === activeOfferId);
 
@@ -38,7 +40,7 @@ export function Cities({ offers }: CityProps): JSX.Element {
         <div className="cities__right-section">
           <Map
             className='offer__map map'
-            city={activeOffer?.city || offers[0].city}
+            city={activeCity}
             offers={offers}
             selectedOffer={activeOffer}
           />

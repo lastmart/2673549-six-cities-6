@@ -1,15 +1,25 @@
 import { Link } from 'react-router-dom';
 import Page from 'components/base/page';
-import { Offer } from 'types/offer-types/offer';
-import { AppRoute } from '@constants';
 import { Cities } from 'components/main-page/cities';
+import { LocationList } from 'components/main-page/location-list';
+import { useAppDispatch, useAppSelector } from 'hooks/index';
+import { setCity, setOffers } from 'store/action';
+import { offers } from 'mocks/offers';
+import { AppRoute, CITIES, CityNames } from '@constants';
 
+function MainPage(): JSX.Element {
+  const activeCity = useAppSelector((state) => state.city);
+  const activeOffers = useAppSelector((state) => state.offers);
 
-type MainPageProps = {
-  offers: Offer[];
-}
+  const dispatch = useAppDispatch();
 
-function MainPage({ offers }: MainPageProps): JSX.Element {
+  const handleChangeCity = (cityName: CityNames) => {
+    const nexActiveCity = CITIES.find((city) => city.name === cityName)!;
+    dispatch(setCity({ city: nexActiveCity }));
+    const nextActiveOffers = offers.filter((offer) => offer.city.name === nexActiveCity.name);
+    dispatch(setOffers({ offers: nextActiveOffers }));
+  };
+
   return (
     <Page>
       <div className="page page--gray page--main">
@@ -45,42 +55,9 @@ function MainPage({ offers }: MainPageProps): JSX.Element {
         <main className="page__main page__main--index">
           <h1 className="visually-hidden">Cities</h1>
           <div className="tabs">
-            <section className="locations container">
-              <ul className="locations__list tabs__list">
-                <li className="locations__item">
-                  <a className="locations__item-link tabs__item" href="#">
-                    <span>Paris</span>
-                  </a>
-                </li>
-                <li className="locations__item">
-                  <a className="locations__item-link tabs__item" href="#">
-                    <span>Cologne</span>
-                  </a>
-                </li>
-                <li className="locations__item">
-                  <a className="locations__item-link tabs__item" href="#">
-                    <span>Brussels</span>
-                  </a>
-                </li>
-                <li className="locations__item">
-                  <a className="locations__item-link tabs__item tabs__item--active">
-                    <span>Amsterdam</span>
-                  </a>
-                </li>
-                <li className="locations__item">
-                  <a className="locations__item-link tabs__item" href="#">
-                    <span>Hamburg</span>
-                  </a>
-                </li>
-                <li className="locations__item">
-                  <a className="locations__item-link tabs__item" href="#">
-                    <span>Dusseldorf</span>
-                  </a>
-                </li>
-              </ul>
-            </section>
+            <LocationList activeCity={activeCity.name} onCityChange={handleChangeCity}></LocationList>
           </div>
-          <Cities offers={offers} />
+          <Cities city={activeCity} offers={activeOffers}/>
         </main>
       </div>
     </Page>

@@ -1,4 +1,4 @@
-import { CityName } from '@constants';
+import { CityNames } from '@constants';
 import { Offer } from 'types/offer-types/offer';
 
 export const offers: Offer[] = [
@@ -9,7 +9,7 @@ export const offers: Offer[] = [
     price: 219,
     previewImage: 'https://14.design.htmlacademy.pro/static/hotel/8.jpg',
     city: {
-      name: CityName.Amsterdam,
+      name: CityNames.Amsterdam,
       location: {
         latitude: 52.35514938496378,
         longitude: 4.673877537499948,
@@ -60,7 +60,7 @@ export const offers: Offer[] = [
     price: 334,
     previewImage: 'https://14.design.htmlacademy.pro/static/hotel/3.jpg',
     city: {
-      name: CityName.Amsterdam,
+      name: CityNames.Amsterdam,
       location: {
         latitude: 52.35514938496378,
         longitude: 4.673877537499948,
@@ -114,7 +114,7 @@ export const offers: Offer[] = [
     price: 163,
     previewImage: 'https://14.design.htmlacademy.pro/static/hotel/17.jpg',
     city: {
-      name: CityName.Amsterdam,
+      name: CityNames.Amsterdam,
       location: {
         latitude: 52.35514938496378,
         longitude: 4.673877537499948,
@@ -166,7 +166,7 @@ export const offers: Offer[] = [
     price: 645,
     previewImage: 'https://14.design.htmlacademy.pro/static/hotel/5.jpg',
     city: {
-      name: CityName.Amsterdam,
+      name: CityNames.Amsterdam,
       location: {
         latitude: 52.35514938496378,
         longitude: 4.673877537499948,
