@@ -4,16 +4,18 @@ import PageHeader from 'components/base/page-header';
 import Page from 'components/base/page';
 import { useAppDispatch } from 'hooks/index';
 import { setCity } from 'store/action';
-import { AppRoute, DefaultCity } from '@constants';
+import { AppRoute, CITIES, DefaultCity } from '@constants';
 import { loginAction } from 'store/api-actions';
+import { getRandomElement } from 'lib/array-utils';
 
 function LoginPage(): JSX.Element {
   const dispatch = useAppDispatch();
   const loginRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
+  const randomCity = getRandomElement(CITIES) ?? DefaultCity;
 
   const handleMainPageRedirect = () => {
-    dispatch(setCity({ city: DefaultCity }));
+    dispatch(setCity({ city: randomCity }));
   };
 
   const handleSubmit = ((evt: FormEvent<HTMLFormElement>) => {
@@ -66,7 +68,7 @@ function LoginPage(): JSX.Element {
             <section className="locations locations--login locations--current">
               <div className="locations__item">
                 <Link className="locations__item-link" to={AppRoute.Main} onClick={handleMainPageRedirect}>
-                  <span>{DefaultCity.name}</span>
+                  <span>{randomCity.name}</span>
                 </Link>
               </div>
             </section>
