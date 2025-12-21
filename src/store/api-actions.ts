@@ -24,7 +24,6 @@ import { store } from './';
 import { dropToken, saveToken } from 'services/token';
 import ApiRouteBuilder from 'services/api-route-builder';
 import { AppRoute, AuthorizationStatus, TIMEOUT_SHOW_ERROR } from '@constants';
-import { redirect } from 'react-router-dom';
 
 export const fetchOffersAction = createAsyncThunk<void, undefined, {
   dispatch: AppDispatch;
