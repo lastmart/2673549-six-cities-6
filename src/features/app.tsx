@@ -7,15 +7,10 @@ import FavouritesPage from './favourites-page';
 import OfferPage from './offer-page';
 import NotFoundPage from './not-found-page';
 import LoadingScreen from './loading-screen';
-import { Review } from 'types/offer-types/review';
 import { useAppSelector } from 'hooks';
 import { AppRoute, AuthorizationStatus } from '@constants';
 
-type AppProps = {
-  reviews: Review[];
-}
-
-function App({ reviews }: AppProps): JSX.Element {
+function App(): JSX.Element {
   const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
   const isOffersDataLoading = useAppSelector((state) => state.isOffersDataLoading);
 
@@ -51,13 +46,13 @@ function App({ reviews }: AppProps): JSX.Element {
                 restrictedFor={AuthorizationStatus.NoAuth}
                 redirectTo={AppRoute.Login}
               >
-                <FavouritesPage/>
+                <FavouritesPage />
               </PrivateRoute>
             }
           />
           <Route
             path={`${AppRoute.Offer}/:offerId`}
-            element={<OfferPage reviews={reviews} />}
+            element={<OfferPage />}
           />
           <Route
             path="*"

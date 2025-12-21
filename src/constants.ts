@@ -1,9 +1,10 @@
 import { City } from 'types/offer-types/сity';
 
 export const MAX_RATING: number = 5;
-export const MAX_COMMENT_SIZE: number = 2000;
+export const MIN_COMMENT_SIZE: number = 50;
+export const MAX_COMMENT_SIZE: number = 300;
 export const MAX_REVIEWS_COUNT_PER_PAGE: number = 10;
-export const MAX_NEAR_PLACE_COUNT: number = 3;
+export const MAX_NEARBY_OFFERS_COUNT: number = 3;
 
 export const URL_MARKER_DEFAULT = '/img/pin.svg';
 export const URL_MARKER_CURRENT = '/img/pin-active.svg';
@@ -13,12 +14,6 @@ export enum AppRoute {
   Login = '/login',
   Favourites = '/favourites',
   Offer = '/offer'
-}
-
-export enum ApiRoute {
-  Offers = '/offers',
-  Login = '/login',
-  Logout = '/logout',
 }
 
 export const TIMEOUT_SHOW_ERROR = 2000;
@@ -98,4 +93,8 @@ export const CITIES: City[] = [
 
 export enum PlaceCardFeature {
   FavouritesCard = 'FavouritesCard'
+}
+
+export enum ERROR {
+  UnexpectedError = 'UnexpectedError'
 }

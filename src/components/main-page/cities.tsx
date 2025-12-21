@@ -3,14 +3,14 @@ import Map from 'components/base/map';
 import OffersList from 'components/main-page/offer-list';
 import { SortDropDown } from 'components/main-page/sort-drop-down';
 import { useCity, useOffers } from 'hooks/store-hooks/offer-hooks';
-import { OfferPreview } from 'types/offer-types/offer-preview';
+import { OfferId } from 'types/offer-types/offer';
 import { SortDirection } from 'types/sort-direction';
 import { getSorted } from 'lib/sort-utils';
 
 export function Cities(): JSX.Element {
   const activeCity = useCity();
   const offers = useOffers();
-  const [activeOfferId, setActiveOfferId] = useState<OfferPreview['id'] | null>(null);
+  const [activeOfferId, setActiveOfferId] = useState<OfferId | null>(null);
   const [activeSortDirection, setActiveSortDirection] = useState<SortDirection>('Popular');
   const activeOffer = offers.find((offer) => offer.id === activeOfferId);
   const sortedOffers = getSorted(offers, activeSortDirection);

@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
-import { Offer } from 'types/offer-types/offer';
+import { Offers } from 'types/offer-types/offer';
+import { PlaceCard } from 'components/cards/place-card';
 import { AppRoute, PlaceCardFeature } from '@constants';
-import { PlaceCard } from 'components/сards/place-card';
 
 type FavouriteLocationItemsProps = {
   city: string;
-  offers: Offer[];
+  offers: Offers;
 }
 
 export function FavouriteLocationItems({ city, offers }: FavouriteLocationItemsProps) {

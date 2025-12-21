@@ -1,17 +1,17 @@
 import ReviewList from 'components/review/review-list';
 import Map from 'components/base/map';
-import { Offer } from 'types/offer-types/offer';
-import { Review } from 'types/offer-types/review';
+import { DetailedOffer } from 'types/offer-types/detailed-offer';
 import { getPercentage } from 'lib/number-utils';
+import { capitalize } from 'lib/string-utils';
 import { MAX_RATING } from '@constants';
+import { Offers } from 'types/offer-types/offer';
 
 type OfferSectionProps = {
-  offer: Offer;
-  reviews: Review[];
-  nearestOffers: Offer[];
+  offer: DetailedOffer;
+  nearbyOffers: Offers;
 }
 
-function OfferSection({ offer, reviews, nearestOffers }: OfferSectionProps) {
+function OfferSection({ offer, nearbyOffers }: OfferSectionProps) {
   return (
     <section className="offer">
       <div className="offer__gallery-container container">
@@ -55,7 +55,7 @@ function OfferSection({ offer, reviews, nearestOffers }: OfferSectionProps) {
           </div>
           <ul className="offer__features">
             <li className="offer__feature offer__feature--entire">
-              {offer.type}
+              {capitalize(offer.type)}
             </li>
             <li className="offer__feature offer__feature--bedrooms">
               {offer.bedrooms} Bedrooms
@@ -104,13 +104,13 @@ function OfferSection({ offer, reviews, nearestOffers }: OfferSectionProps) {
               </p>
             </div>
           </div>
-          <ReviewList reviews={reviews} />
+          <ReviewList />
         </div>
       </div>
       <Map
         className='offer__map map'
         city={offer.city}
-        offers={nearestOffers.concat(offer)}
+        offers={nearbyOffers}
         selectedOffer={offer}
       />
     </section>

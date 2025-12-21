@@ -1,38 +1,43 @@
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import LoadingScreen from 'features/loading-screen';
 import PageHeader from 'components/base/page-header';
 import Page from 'components/base/page';
 import OfferSection from 'components/offer-page/offer-section';
-import NearPlacesList from 'components/offer-page/near-places-list';
-import NotFoundPage from './not-found-page';
-import { Review } from 'types/offer-types/review';
-import { MAX_NEAR_PLACE_COUNT } from '@constants';
-import { useOffers } from 'hooks/store-hooks/offer-hooks';
+import NearbyPlacesList from 'components/offer-page/nearby-places-list';
+import { useAppDispatch, useAppSelector } from 'hooks/index';
+import { OfferId } from 'types/offer-types/offer';
+import { fetchNearbyOffersAction, fetchOfferAction } from 'store/api-actions';
+import { MAX_NEARBY_OFFERS_COUNT } from '@constants';
 
-type OfferPageProps = {
-  reviews: Review[];
-}
+function OfferPage(): JSX.Element {
+  const { offerId } = useParams<{ offerId: OfferId }>();
+  const dispatch = useAppDispatch();
 
-function OfferPage({ reviews }: OfferPageProps): JSX.Element {
-  const offers = useOffers();
-  const { offerId } = useParams<{ offerId: string }>();
-  const foundOffer = offers.filter((offer) => offer.id === offerId).pop();
+  const offer = useAppSelector((state) => state.selectedOffer);
+  const nearbyOffers = useAppSelector((state) => state.nearbyOffers.slice(0, MAX_NEARBY_OFFERS_COUNT));
 
-  if (!foundOffer) {
-    return NotFoundPage();
+  const isOffersDataLoading = useAppSelector((status) => status.isOffersDataLoading);
+  const isNearbyOffersDataLoading = useAppSelector((status) => status.isNearbyOffersDataLoading);
+
+  useEffect(() => {
+    if (offerId && offerId !== offer?.id) {
+      dispatch(fetchOfferAction(offerId));
+      dispatch(fetchNearbyOffersAction(offerId));
+    }
+  }, [dispatch, offerId, offer?.id]);
+
+  if (!offer || isOffersDataLoading || isNearbyOffersDataLoading) {
+    return <LoadingScreen />;
   }
-
-  const nearestOffers = offers
-    .filter((offer) => offer.city.name === foundOffer.city.name && offer.id !== foundOffer.id)
-    .slice(0, MAX_NEAR_PLACE_COUNT);
-  const offerReviews = reviews.filter((review) => review.offerId === foundOffer.id);
 
   return (
     <Page>
       <div className="page">
-        <PageHeader/>
+        <PageHeader />
         <main className="page__main page__main--offer">
-          <OfferSection offer={foundOffer} reviews={offerReviews} nearestOffers={nearestOffers} />
-          <NearPlacesList offers={nearestOffers} />
+          <OfferSection offer={offer} nearbyOffers={nearbyOffers} />
+          <NearbyPlacesList offers={nearbyOffers} />
         </main>
       </div>
     </Page>

@@ -8,17 +8,18 @@ type ReviewItemProps = {
 }
 
 function ReviewItem({ review }: ReviewItemProps) {
+  const reviewDate = new Date(review.date);
 
   return (
     <li className="reviews__item">
       <div className="reviews__user user">
         <div className="reviews__avatar-wrapper user__avatar-wrapper">
-          <img className="reviews__avatar user__avatar" src="img/avatar-max.jpg" width="54" height="54"
+          <img className="reviews__avatar user__avatar" src={review.user.avatarUrl} width="54" height="54"
             alt="Reviews avatar"
           />
         </div>
         <span className="reviews__user-name">
-          {review.author}
+          {review.user.name}
         </span>
       </div>
       <div className="reviews__info">
@@ -31,7 +32,9 @@ function ReviewItem({ review }: ReviewItemProps) {
         <p className="reviews__text">
           {review.comment}
         </p>
-        <time className="reviews__time" dateTime={review.date.toISOString()}>{getMonthWithYear(review.date)}</time>
+        <time className="reviews__time" dateTime={reviewDate.toISOString()}>
+          {getMonthWithYear(reviewDate)}
+        </time>
       </div>
     </li>
   );

@@ -1,11 +1,11 @@
-import { PlaceCard } from 'components/сards/place-card';
-import { Offer } from 'types/offer-types/offer';
+import { PlaceCard } from 'components/cards/place-card';
+import { Offers } from 'types/offer-types/offer';
 
-type NearPlacesListProps = {
-  offers: Offer[];
+type NearbyPlacesListProps = {
+  offers: Offers;
 };
 
-export default function NearPlacesList({ offers }: NearPlacesListProps): JSX.Element {
+export default function NearbyPlacesList({ offers }: NearbyPlacesListProps): JSX.Element {
   return (
     <div className="container">
       <section className="near-places places" >

@@ -1,16 +1,27 @@
+import { useEffect } from 'react';
 import ReviewItem from 'components/review/review-item';
 import ReviewForm from 'components/review/review-form';
-import { Review } from 'types/offer-types/review';
-import { MAX_REVIEWS_COUNT_PER_PAGE } from '@constants';
+import PrivateComponent from 'components/base/private-component';
+import { useAppDispatch, useAppSelector } from 'hooks/index';
+import { fetchOfferReviewsAction } from 'store/api-actions';
+import { loadOfferReviews } from 'store/action';
+import { AuthorizationStatus } from '@constants';
 
-type ReviewListProps = {
-  reviews: Review[];
-}
+function ReviewList() {
+  const dispatch = useAppDispatch();
+  const selectedOffer = useAppSelector((state) => state.selectedOffer);
+  const isReviewDataPosting = useAppSelector((state) => state.isReviewDataPosting);
+  const reviews = useAppSelector((state) => state.reviews);
 
-function ReviewList({ reviews }: ReviewListProps) {
-  const reviewsToShow = reviews
-    .sort((first, second) => first.date.getTime() - second.date.getTime())
-    .slice(0, MAX_REVIEWS_COUNT_PER_PAGE);
+  useEffect(() => {
+    if (selectedOffer?.id) {
+      dispatch(fetchOfferReviewsAction(selectedOffer?.id));
+    }
+
+    return () => {
+      dispatch(loadOfferReviews([]));
+    };
+  }, [dispatch, selectedOffer?.id, isReviewDataPosting]);
 
   return (
     <section className="offer__reviews reviews">
@@ -21,10 +32,12 @@ function ReviewList({ reviews }: ReviewListProps) {
       </h2>
       <ul className="reviews__list">
         {
-          reviewsToShow.map((review) => <ReviewItem key={review.id} review={review} />)
+          reviews.map((review) => <ReviewItem key={review.id} review={review} />)
         }
       </ul>
-      <ReviewForm />
+      <PrivateComponent restrictedFor={AuthorizationStatus.NoAuth} >
+        <ReviewForm />
+      </PrivateComponent>
     </section>
   );
 }

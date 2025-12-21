@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { CardFavouritePart } from './card-favourite-part';
 import { AppRoute, MAX_RATING, PlaceCardFeature } from '@constants';
-import { OfferPreview } from 'types/offer-types/offer-preview';
+import { Offer } from 'types/offer-types/offer';
 import { getPercentage } from 'lib/number-utils';
 
 function getPlaceCardInfoClassName(feature?: PlaceCardFeature): string {
@@ -14,7 +14,7 @@ function getPlaceCardInfoClassName(feature?: PlaceCardFeature): string {
 }
 
 type PlaceCardProps = {
-  offer: OfferPreview;
+  offer: Offer;
   blockName: string;
   feature?: PlaceCardFeature;
   imageWidth?: number;

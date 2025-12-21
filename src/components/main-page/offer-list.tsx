@@ -1,9 +1,9 @@
-import { PlaceCard } from 'components/сards/place-card';
-import { Offer } from 'types/offer-types/offer';
+import { PlaceCard } from 'components/cards/place-card';
+import { Offer, OfferId } from 'types/offer-types/offer';
 
 type OffersListProps = {
   offers: Offer[];
-  onOfferHover: (offerId: Offer['id'] | null) => void;
+  onOfferHover: (offerId: OfferId | null) => void;
 };
 
 export default function OffersList({ offers, onOfferHover }: OffersListProps): JSX.Element {
