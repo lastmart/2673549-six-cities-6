@@ -1,8 +1,9 @@
 import LoadingScreen from 'pages/login-page';
-import { FavoriteLocationItems } from 'components/favorites-page/favorite-location-items';
 import PageHeader from 'components/base/page-header';
 import Page from 'components/base/page';
 import Footer from 'components/base/footer';
+import { FavoritesList } from 'components/favorites-page/favorites-list';
+import { EmptyFavoritesList } from 'components/favorites-page/empty-favourites-list';
 import { useAppSelector } from 'hooks/index';
 import {
   getFavoriteOffersByCity,
@@ -12,6 +13,7 @@ import {
 function FavoritesPage(): JSX.Element {
   const isFavoriteOffersDataLoading = useAppSelector(getFavoriteOffersDataLoadingStatus);
   const offersByCities = useAppSelector(getFavoriteOffersByCity);
+  const hasAnyFavourites = Object.keys(offersByCities).length > 0;
 
   if (isFavoriteOffersDataLoading) {
     return <LoadingScreen />;
@@ -21,20 +23,11 @@ function FavoritesPage(): JSX.Element {
     <Page>
       <div className="page">
         <PageHeader />
-        <main className="page__main page__main--favorites">
-          <div className="page__favorites-container container">
-            <section className="favorites">
-              <h1 className="favorites__title">Saved listing</h1>
-              <ul className="favorites__list">
-                {
-                  Object.entries(offersByCities).map(([city, cityOffers]) => (
-                    <FavoriteLocationItems key={city} city={city} offers={cityOffers} />
-                  ))
-                }
-              </ul>
-            </section>
-          </div>
-        </main>
+        {
+          hasAnyFavourites
+            ? <FavoritesList offersByCities={offersByCities} />
+            : <EmptyFavoritesList />
+        }
         <Footer />
       </div>
     </Page>
