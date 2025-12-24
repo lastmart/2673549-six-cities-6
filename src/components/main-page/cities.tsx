@@ -1,7 +1,7 @@
 import { useCallback, useMemo, useState } from 'react';
 import Map from 'components/base/map';
 import OffersList from 'components/main-page/offer-list';
-import SortDropDown from 'components/main-page/sort-drop-down';
+import { SortDropDown } from 'components/main-page/sort-drop-down';
 import { OfferId } from 'types/offer-types/offer';
 import { SortDirection } from 'types/sort-direction';
 import { useAppSelector } from 'hooks/index';
@@ -20,10 +20,7 @@ export function Cities(): JSX.Element {
     [offers, activeSortDirection]
   );
 
-  const handleSortDirectionChange = useCallback(
-    () => (sortDirection: SortDirection) => setActiveSortDirection(sortDirection),
-    []
-  );
+  const handleSortDirectionChange = (sortDirection: SortDirection) => setActiveSortDirection(sortDirection);
 
   return (
     <div className="cities">
