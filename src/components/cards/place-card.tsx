@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
-import { BookmarkButton } from './bookmark-button';
-import { AppRoute, MAX_RATING, PlaceCardFeature } from '@constants';
 import { Offer } from 'types/offer-types/offer';
+import { BookmarkButton } from './bookmark-button';
 import { getPercentage } from 'lib/number-utils';
+import { useFavoriteOfferUpdate } from 'hooks/use-favorite-offer-update';
+import { AppRoute, MAX_RATING, PlaceCardFeature } from '@constants';
+import React from 'react';
 
 function getPlaceCardInfoClassName(feature?: PlaceCardFeature): string {
   switch (feature) {
@@ -19,7 +21,6 @@ type PlaceCardProps = {
   feature?: PlaceCardFeature;
   imageWidth?: number;
   imageHeight?: number;
-  onFavoriteClick: (offerId: string, setIsFavorite: boolean) => void;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
 }
@@ -30,11 +31,12 @@ export function PlaceCard({
   feature,
   imageWidth,
   imageHeight,
-  onFavoriteClick,
   onMouseEnter,
   onMouseLeave,
 }: PlaceCardProps
 ): JSX.Element {
+  const onFavoriteClick = useFavoriteOfferUpdate();
+
   return (
     <article className={`${blockName}__card place-card`}
       {...(onMouseEnter && { onMouseEnter: onMouseEnter })}
@@ -80,3 +82,5 @@ export function PlaceCard({
     </ article>
   );
 }
+
+export default React.memo(PlaceCard);

@@ -5,14 +5,12 @@ import Footer from 'components/base/footer';
 import { FavoritesList } from 'components/favorites-page/favorites-list';
 import { EmptyFavoritesList } from 'components/favorites-page/empty-favourites-list';
 import { useAppSelector } from 'hooks/index';
-import {
-  getFavoriteOffersByCity,
-  getFavoriteOffersDataLoadingStatus
-} from 'store/favorite-offers-data/selectors';
+import { useFavoriteOffersByCity } from 'hooks/use-favorite-offers-by-city';
+import { getFavoriteOffersDataLoadingStatus } from 'store/favorite-offers-data/selectors';
 
 function FavoritesPage(): JSX.Element {
   const isFavoriteOffersDataLoading = useAppSelector(getFavoriteOffersDataLoadingStatus);
-  const offersByCities = useAppSelector(getFavoriteOffersByCity);
+  const offersByCities = useFavoriteOffersByCity();
   const hasAnyFavourites = Object.keys(offersByCities).length > 0;
 
   if (isFavoriteOffersDataLoading) {

@@ -1,6 +1,6 @@
-import { PlaceCard } from 'components/cards/place-card';
+import { useCallback, useMemo } from 'react';
+import PlaceCard from 'components/cards/place-card';
 import { Offer, OfferId } from 'types/offer-types/offer';
-import { useFavoriteOfferUpdate } from 'hooks/use-favorite-offer-update';
 
 type OffersListProps = {
   offers: Offer[];
@@ -8,15 +8,23 @@ type OffersListProps = {
 };
 
 export default function OffersList({ offers, onOfferHover }: OffersListProps): JSX.Element {
-  const handleFavoriteUpdate = useFavoriteOfferUpdate();
+  const hoverEventHandlers = useMemo(
+    () => {
+      const map = new Map<string, () => void>();
 
-  function handleCursorEnter(offerId: string) {
-    onOfferHover(offerId);
-  }
+      for (const offer of offers) {
+        map.set(offer.id, () => onOfferHover(offer.id));
+      }
 
-  function handleCursorLeave() {
-    onOfferHover(null);
-  }
+      return map;
+    },
+    [offers, onOfferHover]
+  );
+
+  const handleCursorLeave = useCallback(
+    () => onOfferHover(null),
+    [onOfferHover]
+  );
 
   return (
     <div className="cities__places-list places__list tabs__content">
@@ -27,9 +35,8 @@ export default function OffersList({ offers, onOfferHover }: OffersListProps): J
           blockName='cities'
           imageWidth={260}
           imageHeight={200}
-          onMouseEnter={() => handleCursorEnter(offer.id)}
+          onMouseEnter={hoverEventHandlers.get(offer.id)}
           onMouseLeave={handleCursorLeave}
-          onFavoriteClick={handleFavoriteUpdate}
         />))}
     </div>
   );

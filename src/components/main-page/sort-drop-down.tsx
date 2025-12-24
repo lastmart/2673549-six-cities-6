@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState } from 'react';
 import { SortDirection, SortDirections } from 'types/sort-direction';
 
@@ -56,3 +57,5 @@ export function SortDropDown({ activeSortDirection, onSortDirectionChenge }: Sor
     </form>
   );
 }
+
+export default React.memo(SortDropDown);

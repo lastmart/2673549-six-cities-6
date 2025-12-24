@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Offers } from 'types/offer-types/offer';
-import { PlaceCard } from 'components/cards/place-card';
-import { useFavoriteOfferUpdate } from 'hooks/use-favorite-offer-update';
+import PlaceCard from 'components/cards/place-card';
 import { AppRoute, PlaceCardFeature } from '@constants';
 
 type FavoriteLocationItemsProps = {
@@ -10,8 +9,6 @@ type FavoriteLocationItemsProps = {
 }
 
 export function FavoriteLocationItems({ city, offers }: FavoriteLocationItemsProps) {
-  const handleFavoriteUpdate = useFavoriteOfferUpdate();
-
   return (
     <li className="favorites__locations-items">
       <div className="favorites__locations locations locations--current">
@@ -30,7 +27,6 @@ export function FavoriteLocationItems({ city, offers }: FavoriteLocationItemsPro
             feature={PlaceCardFeature.FavoritesCard}
             imageWidth={150}
             imageHeight={110}
-            onFavoriteClick={handleFavoriteUpdate}
           />
         ))}
       </div>

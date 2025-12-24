@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import Map from 'components/base/map';
 import OffersList from 'components/main-page/offer-list';
-import { SortDropDown } from 'components/main-page/sort-drop-down';
+import SortDropDown from 'components/main-page/sort-drop-down';
 import { OfferId } from 'types/offer-types/offer';
 import { SortDirection } from 'types/sort-direction';
 import { useAppSelector } from 'hooks/index';
@@ -14,11 +14,16 @@ export function Cities(): JSX.Element {
   const [activeOfferId, setActiveOfferId] = useState<OfferId | null>(null);
   const [activeSortDirection, setActiveSortDirection] = useState<SortDirection>('Popular');
   const activeOffer = offers.find((offer) => offer.id === activeOfferId);
-  const sortedOffers = getSorted(offers, activeSortDirection);
 
-  const handleSortDirectionChange = (sortDirection: SortDirection) => {
-    setActiveSortDirection(sortDirection);
-  };
+  const sortedOffers = useMemo(
+    () => getSorted(offers, activeSortDirection),
+    [offers, activeSortDirection]
+  );
+
+  const handleSortDirectionChange = useCallback(
+    () => (sortDirection: SortDirection) => setActiveSortDirection(sortDirection),
+    []
+  );
 
   return (
     <div className="cities">
@@ -26,7 +31,7 @@ export function Cities(): JSX.Element {
         <section className="cities__places places">
           <h2 className="visually-hidden">Places</h2>
           <b className="places__found">{sortedOffers.length} places to stay in {activeCity.name}</b>
-          <SortDropDown activeSortDirection={activeSortDirection} onSortDirectionChenge={handleSortDirectionChange}/>
+          <SortDropDown activeSortDirection={activeSortDirection} onSortDirectionChenge={handleSortDirectionChange} />
           <OffersList offers={sortedOffers} onOfferHover={setActiveOfferId} />
         </section>
         <div className="cities__right-section">
