@@ -29,7 +29,7 @@ function OfferPage(): JSX.Element {
   const isNearbyOffersDataLoading = useAppSelector(getNearbyOffersLoadingStatus);
 
   useEffect(() => {
-    if (offerId && offer?.id !== offerId) {
+    if (offerId) {
       dispatch(fetchOfferAction(offerId));
       dispatch(fetchNearbyOffersAction(offerId));
 
@@ -37,7 +37,7 @@ function OfferPage(): JSX.Element {
         dispatch(clearOfferData());
       };
     }
-  }, [dispatch, offerId, offer?.id]);
+  }, [dispatch, offerId]);
 
   if (isOffersDataLoading || isNearbyOffersDataLoading) {
     return <LoadingScreen />;
