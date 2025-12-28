@@ -64,7 +64,7 @@ describe('SelectedOfferData selectors', () => {
 
   it('should return selected offer review sending status from state', () => {
     const { isReviewDataSending } = state[NameSpace.SelectedOffer];
-    const result = getOfferDataLoadingStatus(state);
+    const result = getReviewSendingStatus(state);
     expect(result).toBe(isReviewDataSending);
   });
 });

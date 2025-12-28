@@ -23,6 +23,7 @@
       "mocks/*": ["mocks/*"],
       "store/*": ["store/*"],
       "services/*": ["services/*"],
+      "browser-history": ["browser-history.ts"],
       "@constants": ["constants.ts"],
     },
 
