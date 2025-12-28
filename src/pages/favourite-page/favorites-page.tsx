@@ -5,7 +5,7 @@ import Footer from 'components/base/footer/footer';
 import { FavoritesList } from 'components/favorites-page/favorites-list';
 import { EmptyFavoritesList } from 'components/favorites-page/empty-favorites-list/empty-favorites-list';
 import { useAppSelector } from 'hooks/index';
-import { useFavoriteOffersByCity } from 'hooks/use-favorite-offers-by-city';
+import { useFavoriteOffersByCity } from 'hooks/use-favourite-offers-by-city/use-favorite-offers-by-city';
 import { getFavoriteOffersDataLoadingStatus } from 'store/favorite-offers-data/selectors';
 
 function FavoritesPage(): JSX.Element {

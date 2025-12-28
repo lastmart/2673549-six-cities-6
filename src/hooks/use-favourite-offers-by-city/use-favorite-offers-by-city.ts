@@ -1,5 +1,5 @@
 import { Offers } from 'types/offer-types/offer';
-import { useAppSelector } from '.';
+import { useAppSelector } from '..';
 import { getFavoriteOffers } from 'store/favorite-offers-data/selectors';
 import { useMemo } from 'react';
 

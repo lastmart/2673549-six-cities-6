@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 import { Offer } from 'types/offer-types/offer';
-import { BookmarkButton } from '../bookmark-button/bookmark-button';
+import { BookmarkButton } from 'components/cards/bookmark-button/bookmark-button';
+import { useFavoriteOfferUpdate } from 'hooks/use-favorite-offer-update/use-favorite-offer-update';
 import { getPercentage } from 'lib/number-utils';
 import { capitalize } from 'lib/string-utils';
-import { useFavoriteOfferUpdate } from 'hooks/use-favorite-offer-update';
 import { AppRoute, MAX_RATING, PlaceCardFeature } from '@constants';
 import React from 'react';
 

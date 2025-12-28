@@ -5,7 +5,7 @@ import { URL_MARKER_DEFAULT, URL_MARKER_CURRENT } from '@constants';
 import { Offer } from 'types/offer-types/offer';
 import { City } from 'types/city';
 import { Offers } from 'types/offer-types/offer';
-import useMap from 'hooks/use-map';
+import useMap from 'hooks/use-map/use-map';
 
 type MapProps = {
   className: string;

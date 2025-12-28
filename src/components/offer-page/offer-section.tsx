@@ -4,7 +4,7 @@ import { DetailedOffer } from 'types/offer-types/detailed-offer';
 import { Offers } from 'types/offer-types/offer';
 import { getPercentage } from 'lib/number-utils';
 import { capitalize, getCorrectWordForm } from 'lib/string-utils';
-import { useFavoriteOfferUpdate } from 'hooks/use-favorite-offer-update';
+import { useFavoriteOfferUpdate } from 'hooks/use-favorite-offer-update/use-favorite-offer-update';
 import { MAX_RATING } from '@constants';
 import { BookmarkButton } from 'components/cards/bookmark-button/bookmark-button';
 
