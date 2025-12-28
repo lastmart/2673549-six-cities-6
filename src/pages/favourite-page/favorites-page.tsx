@@ -1,9 +1,9 @@
 import LoadingScreen from 'pages/loading-screen/loading-screen';
 import PageHeader from 'components/base/page-header';
 import Page from 'components/base/page';
-import Footer from 'components/base/footer';
+import Footer from 'components/base/footer/footer';
 import { FavoritesList } from 'components/favorites-page/favorites-list';
-import { EmptyFavoritesList } from 'components/favorites-page/empty-favorites-list';
+import { EmptyFavoritesList } from 'components/favorites-page/empty-favorites-list/empty-favorites-list';
 import { useAppSelector } from 'hooks/index';
 import { useFavoriteOffersByCity } from 'hooks/use-favorite-offers-by-city';
 import { getFavoriteOffersDataLoadingStatus } from 'store/favorite-offers-data/selectors';

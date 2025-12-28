@@ -6,7 +6,7 @@ import { getPercentage } from 'lib/number-utils';
 import { capitalize, getCorrectWordForm } from 'lib/string-utils';
 import { useFavoriteOfferUpdate } from 'hooks/use-favorite-offer-update';
 import { MAX_RATING } from '@constants';
-import { BookmarkButton } from 'components/cards/bookmark-button';
+import { BookmarkButton } from 'components/cards/bookmark-button/bookmark-button';
 
 type OfferSectionProps = {
   offer: DetailedOffer;

@@ -8,7 +8,7 @@ import { User } from 'types/user';
 import { City } from 'types/city';
 import { getRandomCityName, getRandomLocation } from './city-utils';
 import { getRandomGoods } from './offer-utils';
-import { getRandomString } from 'lib/string-utils';
+import { capitalize, getRandomString } from 'lib/string-utils';
 import { getRandomNumber } from 'lib/number-utils';
 import { getRandomBoolean } from 'lib/boolean-utils';
 import { getRandomArray } from 'lib/array-utils';
@@ -37,7 +37,7 @@ export const makeFakeOffer = (): Offer => ({
   price: getRandomNumber(1, 10000),
   rating: getRandomNumber(1, MAX_RATING),
   title: getRandomString(50),
-  type: getRandomString(10),
+  type: capitalize(getRandomString(10)),
 });
 
 export const makeFakeFavoriteOffer = (isFavorite: boolean = true): Offer => ({
