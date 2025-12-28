@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import LoadingScreen from 'pages/loading-screen';
-import NotFoundPage from 'pages/not-found-page';
+import LoadingScreen from 'pages/loading-screen/loading-screen';
+import NotFoundPage from 'pages/not-found-page/not-found-page';
 import PageHeader from 'components/base/page-header';
 import Page from 'components/base/page';
 import OfferSection from 'components/offer-page/offer-section';

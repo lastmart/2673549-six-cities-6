@@ -1,4 +1,4 @@
-import LoadingScreen from 'pages/login-page';
+import LoadingScreen from 'pages/loading-screen/loading-screen';
 import PageHeader from 'components/base/page-header';
 import Page from 'components/base/page';
 import Footer from 'components/base/footer';

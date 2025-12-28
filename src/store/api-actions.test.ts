@@ -25,7 +25,6 @@ import {
   makeFakeAuthData,
   makeFakeDetailedOffer,
   makeFakeFavoriteOffers,
-  makeFakeFavoriteOffer,
   makeFakeOffers,
   makeFakeReview,
   makeFakeReviews

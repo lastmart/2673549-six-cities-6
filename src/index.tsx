@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom/client';
-import App from 'pages/app';
+import App from 'components/app/app';
 import ErrorMessage from 'components/base/error-message/error-message';
 import { store } from 'store';
 import {

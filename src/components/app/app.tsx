@@ -1,11 +1,11 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
-import MainPage from './main-page';
-import LoginPage from './login-page';
-import FavoritesPage from './favorites-page';
-import OfferPage from './offer-page';
-import NotFoundPage from './not-found-page';
-import LoadingScreen from './loading-screen';
+import MainPage from 'pages/main-page/main-page';
+import LoginPage from 'pages/login-page/login-page';
+import FavoritesPage from 'pages/favourite-page/favorites-page';
+import OfferPage from 'pages/offer-page/offer-page';
+import NotFoundPage from 'pages/not-found-page/not-found-page';
+import LoadingScreen from 'pages/loading-screen/loading-screen';
 import PrivateRoute from 'components/base/private-route';
 import { useAppSelector } from 'hooks';
 import { getAuthorizationStatus } from 'store/user-process/selectors';
